@@ -2,6 +2,7 @@
 
 import 'package:firebase_crud_new/provider/CommonProvider.dart';
 import 'package:firebase_crud_new/screens/AdminVewAllJobs.dart';
+import 'package:firebase_crud_new/screens/EmployerHome.dart';
 import 'package:firebase_crud_new/screens/addJob.dart';
 import 'package:firebase_crud_new/screens/viewjobOffer.dart';
 
@@ -137,12 +138,51 @@ class _AdminHome extends State<AdminHome> {
                       ),
                     )),
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => EmployerHome()));
+                    },
+                    child: Container(
+                        child: Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(Icons.person,
+                                size: 100.0, color: Color.fromARGB(255, 209, 45, 45)),
+                            Text('Employer Management')
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
                 ]),
           ),
+          
           Container(color: Colors.black),
           Container(color: Colors.brown),
         ],
+        
       ),
+
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(context,
+      //         MaterialPageRoute(builder: (context) => EmployerHome()));
+      //   },
+      //   backgroundColor: Colors.redAccent,
+      //   child: const Icon(
+      //     Icons.add,
+      //     color: Colors.white,
+      //     size: 32,
+      //   ),
+      // ),
+
+      
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

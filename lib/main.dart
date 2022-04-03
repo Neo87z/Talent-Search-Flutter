@@ -32,6 +32,10 @@ class MyApp extends StatelessWidget {
         StreamProvider(
             create: (context) => firestoreservice.GetAllUsers(),
             initialData: null),
+        
+        // StreamProvider(
+        //     create: (context) => firestoreservice.getallEmployers(),
+        //     initialData: null),
             
       ],
       child: MaterialApp(

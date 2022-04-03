@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crud_new/models/job.dart';
+import 'package:firebase_crud_new/models/employer.dart';
 
 import 'package:firebase_crud_new/models/user.dart';
 import 'package:firebase_crud_new/services/Firestore_service.dart';
@@ -431,4 +432,169 @@ class ProductProvider with ChangeNotifier {
       'Status': 'Decline',
     });
   }
+
+  //Employer Model
+
+  final firestoreService = FirestoreService();
+  late String _CompanyID = '';
+  late String _CompanyName = '';
+  late String _CompanyField = '';
+  late String _CompanyAddress= '';
+  late String _ContactNumber= '';
+  late String _ManagerName= '';
+  late String _ManagerEmail= '';
+  late String _Website= '';
+  late String _Rating = '';
+
+  String get getCompanyID => _CompanyID;
+  String get getCompanyName => _CompanyName;
+  String get getCompanyField => _CompanyField;
+  String get getCompanyAddress => _CompanyAddress;
+  String get getContactNumber => _ContactNumber;
+  String get getManagerName => _ManagerName;
+  String get getManagerEmail => _ManagerEmail;
+  String get getWebsite => _Website;
+  String get getRating => _Rating;
+
+  ChangeCompanyID(String value) {
+    _CompanyID = value;
+    notifyListeners();
+  }
+
+  ChangeCompanyName(String value) {
+    _CompanyName = value;
+    notifyListeners();
+  }
+
+  ChangeCompanyField(String value) {
+    _CompanyField = value;
+    notifyListeners();
+  }
+
+  ChangeCompanyAddress(String value) {
+    _CompanyAddress = value;
+    notifyListeners();
+  }
+
+  ChangeContactNumbers(String value) {
+    _ContactNumber = value;
+    notifyListeners();
+  }
+
+  ChangeManagerName(String value) {
+    _ManagerName = value;
+    notifyListeners();
+  }
+
+  ChangeManagereEmail(String value) {
+    _ManagerEmail = value;
+    notifyListeners();
+  }
+
+  ChangeWebsite(String value) {
+    _Website = value;
+    notifyListeners();
+  }
+
+  ChangeRating(String value) {
+    _Rating = value;
+    notifyListeners();
+  }
+
+  LoadEmployer(Employer employer) {
+    _CompanyID = employer.CompanyID;
+    _CompanyName = employer.CompanyName;
+    _CompanyField = employer.CompanyField;
+    _CompanyAddress = employer.CompanyAddress;
+    _ContactNumber = employer.ContactNumber;
+    _ManagerName = employer.ManagerName;
+    _ManagerEmail = employer.ManagerEmail;
+    _Website = employer.Website;
+    _Rating = employer.Rating;
+
+  }
+
+  void AddNewEmployer() {
+    var newEmployer = Employer(
+        CompanyID: uuid.v4(), 
+        CompanyName: getCompanyName, 
+        CompanyField: getCompanyField,
+        CompanyAddress: getCompanyAddress,
+        ContactNumber: getContactNumber,
+        ManagerName: getManagerName,
+        ManagerEmail: getManagerEmail,
+        Website: getWebsite,
+        Rating: getRating,);
+    firestoreService.AddNewEmployer(newEmployer);
+  }
+  saveEmployer() {
+    print(_CompanyID);
+    if (_CompanyID == null) {
+      var newEmployer = Employer(
+        CompanyID: _CompanyID, 
+        CompanyName: getCompanyName, 
+        CompanyField: _CompanyField,
+        CompanyAddress: _CompanyAddress,
+        ContactNumber: _ContactNumber,
+        ManagerName: _ManagerName,
+        ManagerEmail: _ManagerEmail,
+        Website: _Website,
+        Rating: _Rating);
+      firestoreService.saveEmployer(newEmployer);
+    } else {
+      //Update
+      var updatedEmployer =
+          Employer(
+        CompanyID: uuid.v4(), 
+        CompanyName: getCompanyName, 
+        CompanyField: getCompanyField,
+        CompanyAddress: getCompanyAddress,
+        ContactNumber: getContactNumber,
+        ManagerName: getManagerName,
+        ManagerEmail: getManagerEmail,
+        Website: getWebsite,
+        Rating: getRating);
+
+      firestoreService.saveEmployer(updatedEmployer);
+    }
+  }
+
+  removeEmployer(String CompanyID){
+    firestoreService.removeEmployer(CompanyID);
+  }
+
+  // SaveEmployer() {
+  //   var newEmployer = Employer(
+  //       CompanyName: getCompanyName,
+  //       CompanyField: getCompanyField,
+  //       CompanyAddress: getCompanyAddress,
+  //       ContactNumber: getContactNumber,
+  //       ManagerName: getManagerName,
+  //       ManagerEmail: getManagerEmail,
+  //       Website: getWebsite,
+  //       Rating: getRating,
+  //       CompanyID: uuid.v4());
+
+  //   fstore.AddNewEmployer(newEmployer);
+  // }
+
+  // UpdateEmployerListing() {
+  //   print("getCompanyID");
+  //   print(getCompanyName);
+  //   print(getCompanyID);
+  //   final docUser = FirebaseFirestore.instance.collection('employer').doc(getCompanyID);
+  //   docUser.update({
+  //     'CompanyName': getCompanyName,
+  //     'CompanyField': getCompanyField,
+  //     'CompanyAddress': getCompanyAddress,
+  //     'ContactNumber': getContactNumber,
+  //     'ManagerName': getManagerName,
+  //     'ManagerEmail': getManagerEmail,
+  //     'Website': getWebsite,
+  //     'Rating': getRating
+  //   });
+  // }
 }
+
+  
+
