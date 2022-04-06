@@ -87,43 +87,7 @@ class FirestoreService {
     await docUser.set(json);
   }
 
-  //  Stream<List<Employer>> getallEmployers() {
-  //   return FirebaseFirestore.instance.collection('employer').snapshots().map(
-  //       (snapshot) => snapshot.docs
-  //           .map((document) => Employer.getallEmployers(document.data()))
-  //           .toList());
-  // }
-
-  // Future<void> AddNewEmployer(Employer employer) async {
-  //   final docUser =
-  //       FirebaseFirestore.instance.collection('employer').doc();
-  //   final json = {
-  //     'CompanyID': employer.CompanyID,
-  //     'CompanyName': employer.CompanyName,
-  //     'CompanyField': employer.CompanyField,
-  //     'CompanyAddress': employer.CompanyAddress,
-  //     'ContactNumber': employer.ContactNumber,
-  //     'ManagerName': employer.ManagerName,
-  //     'ManagerEmail': employer.ManagerEmail,
-  //     'Website': employer.Website,
-  //     'Rating': employer.Rating,
-
-  //   };
-
-  //   await docUser.set(json);
-  // }
-
-  // Future<void> saveEmployer(Employer employer){
-  //   return _db.collection('employer').doc(employer.CompanyID).set(employer.toMap());
-  // }
-
-  // Stream<List<Employer>> getEmployers(){
-  //   return _db.collection('employer').snapshots().map((snapshot) => snapshot.docs.map((document) => Employer.fromFirestore(document.data())).toList());
-  // }
-
-  // Future<void> removeEmployer(String CompanyID){
-  //   return _db.collection('employer').doc(CompanyID).delete();
-  // }
+  //Employer Service
 
   Future<void> AddEmployer(Employer employer) async {
     final docPart = _db.collection("employer").doc();
@@ -143,41 +107,4 @@ class FirestoreService {
   Future<void> RemoveEmployer(String? CompanyID) {
     return _db.collection("employer").doc(CompanyID).delete();
   }
-
-  // Future<void> removeEmployer(String CompanyID) async {
-  //   try {
-  //     await _db.collection("employer").doc(CompanyID).delete();
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-
-  // Future<List> getEmployers() async {
-  //   QuerySnapshot querySnapshot;
-  //   List docs = [];
-  //   try {
-  //     querySnapshot =
-  //         await _db.collection('employer').orderBy('CompanyName').get();
-  //     if (querySnapshot.docs.isNotEmpty) {
-  //       for (var doc in querySnapshot.docs.toList()) {
-  //         Map a = {"CompanyID": doc.id, "CompanyName": doc['CompanyName'], "CompanyField": doc["CompanyField"]};
-  //         docs.add(a);
-  //       }
-  //       return docs;
-  //     }
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
-
-  // Future<void> saveEmployer(String CompanyID, String CompanyName, String CompanyField, String CompanyAddress, String ContactNumber, String ManagerName,String ManagerEmail, String Website, String Rating) async {
-  //   try {
-  //     await _db
-  //         .collection("employer")
-  //         .doc(CompanyID)
-  //         .update({ 'CompanyName': CompanyName, 'CompanyField': CompanyField, 'CompanyAddress': CompanyAddress, 'ContactNumber': ContactNumber, 'ManagerName': ManagerName, 'ManagerEmail': ManagerEmail, 'Website': Website,'Rating': Rating});
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  // }
 }
