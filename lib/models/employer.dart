@@ -11,20 +11,16 @@ class Employer{
   final String Website;
   final String Rating;
 
-  Employer( {this.CompanyID = '', required this.CompanyName, required this.CompanyField, required this.CompanyAddress, required this.ContactNumber, required this.ManagerName,  required this.ManagerEmail, required this.Website, required this.Rating});
-
-// Employer.getallEmployers(Map<String,dynamic> firestore)
-//   :CompanyID=firestore['CompanyID'],
-//   CompanyName=firestore['CompanyName'],
-//   CompanyField=firestore['CompanyField'],
-//   CompanyAddress=firestore['CompanyAddress'],
-//   ContactNumber=firestore['ContactNumber'],
-//   ManagerName=firestore['ManagerName'],
-//   ManagerEmail=firestore['ManagerEmail'],
-//   Website=firestore['Website'],
-//   Rating=firestore['Rating'];
-// } 
-
+  Employer( {
+    this.CompanyID = '', 
+  required this.CompanyName, 
+  required this.CompanyField, 
+  required this.CompanyAddress, 
+  required this.ContactNumber, 
+  required this.ManagerName,  
+  required this.ManagerEmail, 
+  required this.Website, 
+  required this.Rating});
 
   Map<String, dynamic> toMap() {
     return {

@@ -3,6 +3,7 @@
 import 'package:firebase_crud_new/provider/CommonProvider.dart';
 import 'package:firebase_crud_new/screens/AdminVewAllJobs.dart';
 import 'package:firebase_crud_new/screens/EmployerHome.dart';
+import 'package:firebase_crud_new/screens/EmployerScreen.dart';
 import 'package:firebase_crud_new/screens/addJob.dart';
 import 'package:firebase_crud_new/screens/viewjobOffer.dart';
 
@@ -141,7 +142,7 @@ class _AdminHome extends State<AdminHome> {
                   GestureDetector(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => EmployerHome()));
+                          builder: (context) => EmployerScreen()));
                     },
                     child: Container(
                         child: Card(
@@ -152,8 +153,7 @@ class _AdminHome extends State<AdminHome> {
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: <Widget>[
-                            Icon(Icons.person,
-                                size: 100.0, color: Color.fromARGB(255, 209, 45, 45)),
+                            Icon(Icons.person, size: 100.0),
                             Text('Employer Management')
                           ],
                         ),
@@ -162,11 +162,9 @@ class _AdminHome extends State<AdminHome> {
                   ),
                 ]),
           ),
-          
           Container(color: Colors.black),
           Container(color: Colors.brown),
         ],
-        
       ),
 
       // floatingActionButton: FloatingActionButton(
@@ -182,7 +180,6 @@ class _AdminHome extends State<AdminHome> {
       //   ),
       // ),
 
-      
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),

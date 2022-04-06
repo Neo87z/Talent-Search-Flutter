@@ -16,7 +16,6 @@ import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../provider/CommonProvider.dart';
 
-
 // class ViewEmployer extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
@@ -32,7 +31,7 @@ import '../provider/CommonProvider.dart';
 //                     title: Text(Employers[index].CompanyName),
 //                     subtitle: Text(
 //                        Employers[index].CompanyField),
-                       
+
 //                     trailing: Text(Employers[index].CompanyAddress),
 //                     isThreeLine: true,
 //                     onTap: () { Navigator.of(context).push(MaterialPageRoute(builder: (context)=>EditEmployer(Employers[index])));},
@@ -85,7 +84,7 @@ import '../provider/CommonProvider.dart';
 //   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: new AppBar(
-        
+
 //       ),
 //       body: ViewEmployer(),
 //     );
@@ -101,7 +100,7 @@ import '../provider/CommonProvider.dart';
 // class _AdminViewEmployerState extends State<AdminViewEmployer> {
 
 //   Future _data;
-  
+
 //   Future getPosts() async {
 //     var firestore = FirebaseFirestore.instance;
 
@@ -182,7 +181,6 @@ import '../provider/CommonProvider.dart';
 //   }
 // }
 
-
 // class ViewEmployer extends StatelessWidget {
 //   // This widget is the root of your application.
 //   @override
@@ -205,99 +203,131 @@ import '../provider/CommonProvider.dart';
 //   }
 // }
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Employer Details',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ViewEmployer(title: 'Employer Details'),
-    );
-  }
-}
-
-class ViewEmployer extends StatefulWidget {
-  ViewEmployer({Key , this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  Database db;
-  List docs = [];
-  initialise() {
-    db = Database();
-    db.initiliase();
-    db.read().then((value) => {
-          setState(() {
-            docs = value;
-          })
-        });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initialise();
-  }
+class ViewEmployer extends StatelessWidget {
+  final DocumentSnapshot documentSnapshot;
+  const ViewEmployer({Key? key, required this.documentSnapshot})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(56, 75, 49, 1.0),
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(56, 75, 49, 1.0),
-        title: Text("Country"),
+        title: const Text("Employer Details"),
+        elevation: 0,
       ),
-      body: ListView.builder(
-        itemCount: docs.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              onTap: () {
-                Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                View(country: docs[index], db: db)))
-                    .then((value) => {
-                          if (value != null) {initialise()}
-                        });
-              },
-              contentPadding: EdgeInsets.only(right: 30, left: 36),
-              title: Text(docs[index]['name']),
-              trailing: Text(docs[index]['code']),
+      body: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * .5,
+              decoration: const BoxDecoration(
+                color: Colors.yellow,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: Column(
+                children: [
+                  Center(
+                    child: Text(
+                      "Company Name: ${documentSnapshot['CompanyName']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Company Field: ${documentSnapshot['CompanyField']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Company Address: ${documentSnapshot['CompanyAddress']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Contact Number: ${documentSnapshot['ContactNumber']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Manager Name: ${documentSnapshot['ManagerName']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Manager Email: ${documentSnapshot['ManagerEmail']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Company Rating(1-5): ${documentSnapshot['Rating']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Text(
+                      "Company Website: ${documentSnapshot['Website']}",
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'RobotoMono',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          );
-        },
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => AddEmployer(db: db)))
-              .then((value) {
-            if (value != null) {
-              initialise();
-            }
-          });
-        },
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
