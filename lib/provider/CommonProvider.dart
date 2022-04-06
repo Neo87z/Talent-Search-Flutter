@@ -501,20 +501,6 @@ class ProductProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // void AddNewEmployer() {
-  //   var newEmployer = Employer(
-  //       CompanyID: uuid.v4(),
-  //       CompanyName: getCompanyName,
-  //       CompanyField: getCompanyField,
-  //       CompanyAddress: getCompanyAddress,
-  //       ContactNumber: getContactNumber,
-  //       ManagerName: getManagerName,
-  //       ManagerEmail: getManagerEmail,
-  //       Website: getWebsite,
-  //       Rating: getRating,);
-  //   firestoreService.AddNewEmployer(newEmployer);
-  // }
-
   void removeEmployer(String? CompanyID) {
     firestoreService.RemoveEmployer(CompanyID);
   }

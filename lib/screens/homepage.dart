@@ -5,7 +5,7 @@ import 'package:firebase_crud_new/screens/CommuniJobs.dart';
 import 'package:firebase_crud_new/screens/EgineerJobs.dart';
 import 'package:firebase_crud_new/screens/GovernMentJobs.dart';
 import 'package:firebase_crud_new/screens/HealthJobs.dart';
-
+import 'package:firebase_crud_new/screens/EmployerHome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -81,7 +81,7 @@ class _HomePage extends State<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => EngineerJobs()));
                     },
                     child: Container(
@@ -103,7 +103,7 @@ class _HomePage extends State<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => HealthKobs()));
                     },
                     child: Container(
@@ -125,7 +125,7 @@ class _HomePage extends State<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                       Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => FinanceJobs()));
                     },
                     child: Container(
@@ -169,7 +169,7 @@ class _HomePage extends State<HomePage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => GovernJobs()));
                     },
                     child: Container(
@@ -184,6 +184,27 @@ class _HomePage extends State<HomePage> {
                             Icon(Icons.add_moderator_sharp,
                                 size: 100.0, color: Colors.green),
                             Text('Government Sector')
+                          ],
+                        ),
+                      ),
+                    )),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => EmployerHome()));
+                    },
+                    child: Container(
+                        child: Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Icon(Icons.person, size: 100.0),
+                            Text('Employer Details')
                           ],
                         ),
                       ),

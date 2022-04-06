@@ -33,12 +33,25 @@ class PartEmployer extends StatelessWidget {
           child: Column(
             children: [
               Text(
+                "          ",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
                 documentSnapshot['CompanyName'],
                 style: Theme.of(context).textTheme.headline6,
               ),
               Text(
-                documentSnapshot['CompanyField'],
+                "          ",
                 style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(
+                "[ ${documentSnapshot['CompanyField']} ]",
+                style: const TextStyle(
+                  color: Colors.blue,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'RobotoMono',
+                ),
               ),
               Row(
                 children: [
@@ -84,7 +97,6 @@ class PartEmployer extends StatelessWidget {
           ),
         ),
       ),
-      //),
     );
   }
 

@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_crud_new/provider/CommonProvider.dart';
 import 'package:firebase_crud_new/screens/addEmployer.dart';
-import 'package:firebase_crud_new/screens/viewEmployer.dart';
 import 'package:firebase_crud_new/components/partEmployer.dart';
 
 class EmployerScreen extends StatefulWidget {
