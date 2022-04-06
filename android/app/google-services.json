@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "319226539748",
+    "project_id": "firestirecrud-96060",
+    "storage_bucket": "firestirecrud-96060.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:319226539748:android:7055931f10547d084bc6f1",
+        "android_client_info": {
+          "package_name": "com.example.firebase_crud_new"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "319226539748-agack5flb3jpdj0osts1qdpmu2e13lnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBvUoLOMRjTA8ymfNlHQXoUxt4iXxPFuE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "319226539748-agack5flb3jpdj0osts1qdpmu2e13lnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
